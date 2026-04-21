@@ -1,17 +1,17 @@
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const message = document.getElementById("message");
 const successScreen = document.getElementById("successScreen");
 const successText = document.getElementById("successText");
 const closeSuccess = document.getElementById("closeSuccess");
-const buttonArea = document.getElementById("buttonArea");
+const messageBubble = document.getElementById("messageBubble");
+const buttonArea = document.querySelector(".choice-box");
 
 const noMessages = [
-    "Yakin pilih No? 🥺",
+    "Yakin pilih No, Nike Nova Yani? 🥺",
     "Coba pikir lagi dong 😭",
     "Jangan gitu yaa 😔",
-    "Kayaknya tombol Yes lebih bagus 😆",
-    "Aku tunggu jawaban terbaikmu 😌"
+    "Kayaknya tombol Yes lebih cocok 😆",
+    "Aku masih nunggu jawaban terbaikmu 😌"
 ];
 
 let noIndex = 0;
@@ -22,7 +22,7 @@ function createHeart() {
     const icons = ["💖", "💘", "💕", "💞", "💓"];
     heart.innerText = icons[Math.floor(Math.random() * icons.length)];
     heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.fontSize = 18 + Math.random() * 24 + "px";
+    heart.style.fontSize = 18 + Math.random() * 22 + "px";
     heart.style.animationDuration = 3 + Math.random() * 3 + "s";
     document.body.appendChild(heart);
 
@@ -35,13 +35,13 @@ function createSparkles(x, y) {
     for (let i = 0; i < 18; i++) {
         const sparkle = document.createElement("div");
         sparkle.className = "sparkle";
-        sparkle.style.left = x + (Math.random() * 160 - 80) + "px";
-        sparkle.style.top = y + (Math.random() * 120 - 60) + "px";
+        sparkle.style.left = x + (Math.random() * 120 - 60) + "px";
+        sparkle.style.top = y + (Math.random() * 80 - 40) + "px";
         document.body.appendChild(sparkle);
 
         setTimeout(() => {
             sparkle.remove();
-        }, 1600);
+        }, 1400);
     }
 }
 
@@ -54,8 +54,8 @@ function moveNoButton() {
     const maxX = areaWidth - btnWidth;
     const maxY = areaHeight - btnHeight;
 
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    const randomX = Math.floor(Math.random() * Math.max(maxX, 1));
+    const randomY = Math.floor(Math.random() * Math.max(maxY, 1));
 
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
@@ -65,35 +65,38 @@ function moveNoButton() {
 yesBtn.addEventListener("click", function () {
     const rect = yesBtn.getBoundingClientRect();
 
-    message.textContent = "Kamu pilih Yes! Aku seneng banget 😍";
+    messageBubble.innerHTML = `
+    Kamu pilih Yes! Aku seneng banget 😍
+    <span class="time">19.14</span>
+  `;
+
     successText.textContent =
-        "Makasih udah pilih Yes. Semoga ini jadi awal dari banyak cerita indah yang kita buat bareng 💖";
+        "Makasih ya, Nike Nova Yani. Semoga ini jadi awal dari banyak cerita indah, tawa, dan kebahagiaan yang bisa kita jalanin bareng 💖";
+
     successScreen.style.display = "flex";
 
     createSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
-    for (let i = 0; i < 25; i++) {
-        setTimeout(createHeart, i * 120);
+    for (let i = 0; i < 24; i++) {
+        setTimeout(createHeart, i * 100);
     }
-
-    setTimeout(() => {
-        alert("Yeaay! Makasih udah pilih Yes 💞");
-    }, 300);
-});
-
-noBtn.addEventListener("click", function () {
-    message.textContent = noMessages[noIndex % noMessages.length];
-    noIndex++;
-    moveNoButton();
-
-    setTimeout(() => {
-        alert("Kamu pilih No 😢 Tapi aku tetap berharap kamu berubah pikiran hehe");
-    }, 200);
 });
 
 noBtn.addEventListener("mouseenter", function () {
     moveNoButton();
-    message.textContent = noMessages[noIndex % noMessages.length];
+    messageBubble.innerHTML = `
+    ${noMessages[noIndex % noMessages.length]}
+    <span class="time">19.14</span>
+  `;
+    noIndex++;
+});
+
+noBtn.addEventListener("click", function () {
+    moveNoButton();
+    messageBubble.innerHTML = `
+    ${noMessages[noIndex % noMessages.length]}
+    <span class="time">19.14</span>
+  `;
     noIndex++;
 });
 
@@ -101,4 +104,4 @@ closeSuccess.addEventListener("click", function () {
     successScreen.style.display = "none";
 });
 
-setInterval(createHeart, 1200);
+setInterval(createHeart, 1800);

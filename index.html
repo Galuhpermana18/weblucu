@@ -4,33 +4,64 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maukah Kamu Jadi Pacarku?</title>
+    <title>Chat untuk Nike Nova Yani</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="card">
-        <div class="emoji">💖</div>
-        <h1>Maukah Kamu Jadi Pacarku?</h1>
-        <p>
-            Aku cuma mau bilang... dari semua hal manis di dunia,
-            senyummu tetap favoritku. Jadi, gimana? 😊
-        </p>
+    <div class="wa-app">
+        <div class="wa-phone">
+            <div class="wa-header">
+                <div class="wa-avatar">💖</div>
+                <div class="wa-contact">
+                    <h2>Nike Nova Yani</h2>
+                    <span>online</span>
+                </div>
+            </div>
 
-        <div class="buttons" id="buttonArea">
-            <button id="yesBtn" type="button">Yes 💘</button>
-            <button id="noBtn" type="button">No 🙈</button>
+            <div class="wa-chat" id="waChat">
+                <div class="chat-date">Hari ini</div>
+
+                <div class="bubble bubble-left intro-title">
+                    Hai, Nike Nova Yani 💕
+                    <span class="time">19.10</span>
+                </div>
+
+                <div class="bubble bubble-left intro-text">
+                    Aku cuma mau bilang... dari semua hal manis di dunia,
+                    senyummu tetap favoritku. Jadi, gimana? 😊
+                    <span class="time">19.11</span>
+                </div>
+
+                <div class="bubble bubble-right question-bubble">
+                    Nike Nova Yani, maukah kamu jadi pacarku? 🥹
+                    <span class="time">19.12</span>
+                </div>
+
+                <div class="choice-box">
+                    <button id="yesBtn" type="button">Yes 💘</button>
+                    <button id="noBtn" type="button">No 🙈</button>
+                </div>
+
+                <div class="bubble bubble-left info-text" id="messageBubble">
+                    Aku tunggu jawaban terbaikmu 😳
+                    <span class="time">19.13</span>
+                </div>
+
+                <div class="bubble bubble-left note-text">
+                    Coba klik tombolnya ya 😆
+                    <span class="time">19.13</span>
+                </div>
+            </div>
         </div>
-
-        <div class="message" id="message"></div>
-        <div class="note">Coba klik tombolnya ya 😆</div>
     </div>
 
     <div class="success-screen" id="successScreen">
-        <div class="success-box">
-            <h2>Yeaay! 💞</h2>
+        <div class="success-card">
+            <div class="success-icon">💞</div>
+            <h3>Yeaay, Nike Nova Yani!</h3>
             <p id="successText">
-                Makasih ya udah pilih Yes. Semoga ini jadi awal cerita manis kita ✨
+                Makasih udah pilih Yes. Semoga ini jadi awal cerita indah kita berdua ✨
             </p>
             <button id="closeSuccess" type="button">Tutup</button>
         </div>
